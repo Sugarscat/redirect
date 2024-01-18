@@ -11,7 +11,7 @@ const redirect = () => {
   // 获取浏览器链接地址
   const url = window.location.href;
   // 替换链接地址中的 ".com" 为 ".cn"
-  const newUrl = url.replace(".com", ".cn");
+  const newUrl = url.replace(".cn", ".com");
   // 设置浏览器的链接地址
   window.location.href = newUrl;
 }
