@@ -65,7 +65,7 @@ main {
 
   span {
     font-weight: bold;
-    font-size: large;
+    // font-size: large;
 
     display: flex;
     align-items: center;
