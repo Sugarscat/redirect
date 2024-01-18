@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
+import Spinner from '@/components/Spinner.vue'
 
 const time = ref(10)
 
@@ -44,16 +45,20 @@ onMounted(() => {
 <template>
   <main>
     <h1>This website isn't currently supported in your country!</h1>
-    <span>Don't worry, this is normal. 
-      Detecting available sites and about to redirect 
-      <span class="time">[ {{ time }}s ]</span>
-      .
-    </span>
+    <span>Don't worry, this is normal.</span>
+    <span>We'll redirect you as soon as we're available there.</span>
+    <span>Please wait... <span class="time">[ {{ time }}s ]</span></span>
+    <span v-if="time===0" class="time">
+      <Spinner/>
+      Redirecting...</span>
   </main>
 </template>
 
 <style scoped lang="scss">
 main {
+  display: flex;
+  flex-direction: column;
+
   h1 {
     font-weight: bold;
   }
@@ -61,6 +66,13 @@ main {
   span {
     font-weight: bold;
     font-size: large;
+
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-start;
+
+    gap: 10px;
 
     &.time {
       color: var(--color-warning9);
